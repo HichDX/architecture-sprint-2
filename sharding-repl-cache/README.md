@@ -37,4 +37,4 @@ curl --silent http://ifconfig.me
 
 ## Схема
 
-https://drive.google.com/file/d/1IayW-5DT0y0oh6ZLqVpktg7csMe5yE1P/view?usp=sharing
+https://drive.google.com/file/d/19hEsbXAoDsH36YRLRRmZv7LvbSugCScB/view?usp=sharing
