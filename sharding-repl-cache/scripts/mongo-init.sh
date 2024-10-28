@@ -4,7 +4,7 @@
 # Инициализируем бд
 ###
 
-docker exec -it configSrv mongosh --port 27017 <<EOF
+docker exec -i configSrv mongosh --port 27017 <<EOF
 rs.initiate(
   {
     _id : "config_server",
@@ -16,7 +16,7 @@ rs.initiate(
 );
 EOF
 
-docker exec -it shard1-r1 mongosh --port 27028 <<EOF
+docker exec -i shard1-r1 mongosh --port 27028 <<EOF
 rs.initiate(
     {
       _id : "r0",
@@ -29,7 +29,7 @@ rs.initiate(
 );
 EOF
 
-docker exec -it shard2-r1 mongosh --port 27025 <<EOF
+docker exec -i shard2-r1 mongosh --port 27025 <<EOF
 rs.initiate(
     {
       _id : "r1",
@@ -42,7 +42,7 @@ rs.initiate(
   );
 EOF
 
-docker exec -it mongos_router mongosh --port 27020 <<EOF
+docker exec -i mongos_router mongosh --port 27020 <<EOF
 
 sh.addShard("r0/shard1-r1:27028");
 sh.addShard("r1/shard2-r1:27025");
@@ -58,6 +58,7 @@ db.helloDoc.countDocuments();
 
 EOF
 
-docker exec -it redis_1 bash <<EOF
+docker exec -i redis_1 bash <<EOF
 echo "yes" | redis-cli --cluster create   173.17.0.2:6379   173.17.0.3:6379   173.17.0.4:6379   173.17.0.5:6379   173.17.0.8:6379   173.17.0.9:6379   --cluster-replicas 1
+redis-cli cluster nodes 
 EOF

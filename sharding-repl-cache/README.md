@@ -2,13 +2,13 @@
 
 ## Как запустить
 
-Запускаем mongodb и приложение
+Запускаем mongodb
 
 ```shell
 docker compose up -d
 ```
 
-Заполняем mongodb данными
+Запускаем скрипт
 
 ```shell
 ./scripts/mongo-init.sh
